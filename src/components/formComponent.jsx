@@ -26,7 +26,7 @@ const UserForm = (props) => {
         if(e.target.value.length < 1) {
             setFirstnameError("First Name is required!");
         } else if(e.target.value.length < 2) {
-            setFirstnameError("First Name must be 3 characters or longer!");
+            setFirstnameError("First Name must be 2 characters or longer!");
         }else{
             setFirstnameError("")
         }
@@ -94,7 +94,7 @@ const UserForm = (props) => {
                     <label>First Name: </label> 
                     <input type="text" name="firstName" onChange={ handleFirstName } />
                     {
-                        firstNameError ?
+                        firstName.length <3 || firstName.length ?
                         <p style={{color:'red'}}>{ firstNameError }</p> :
                         ''
                     }
