@@ -69,6 +69,8 @@ const UserForm = (props) => {
         setConfirmPassword(e.target.value);
         if(e.target.value !== password) {
             setConfirmPasswordError("Password and Confirm Password must match!");
+        }else{
+            setConfirmPasswordError("")
         }
     }
 
