@@ -3,22 +3,26 @@ import React, { useState } from  'react';
     
 const UserForm = (props) => {
     const [firstName, setFirstName] = useState("");
-    const [firstNameError, setFirstnameError] = useState("");
+    const [firstNameError, setFirstnameError] = useState(true);
     const [lastName, setLastName] = useState("");
-    const [lastNameError, setLastnameError] = useState("");
+    const [lastNameError, setLastnameError] = useState(true);
     const [email, setEmail] = useState("");
-    const [emailError, setEmailError] = useState("");
+    const [emailError, setEmailError] = useState(true);
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [passwordError, setPasswordError] = useState(true);
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState(true);
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);   
     
     const createUser = (e) => {
         e.preventDefault();
+        if(!firstNameError && !lastNameError && !emailError && !passwordError && !confirmPasswordError ) {
         const newUser = { firstName, lastName, email, password, confirmPassword };
         console.log("Welcome", newUser);
         setHasBeenSubmitted( true );
+        }else {
+            alert("Error");
+        }
     };
 
     const handleFirstName = (e) => {
@@ -135,7 +139,7 @@ const UserForm = (props) => {
                         ''
                     }
                 </div>
-                <input type="submit" value="Create User" />
+                <input disabled={confirmPasswordError || passwordError || firstNameError || lastNameError || emailError} type="submit" value="Create User" />
             </form>
             {/* <p>First Name: {firstName}</p>
             <p>Last Name: {lastName}</p>
