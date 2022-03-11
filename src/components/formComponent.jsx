@@ -94,7 +94,7 @@ const UserForm = (props) => {
                     <label>First Name: </label> 
                     <input type="text" name="firstName" onChange={ handleFirstName } />
                     {
-                        firstName.length <3 || firstName.length ?
+                        firstNameError ?
                         <p style={{color:'red'}}>{ firstNameError }</p> :
                         ''
                     }
